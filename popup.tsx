@@ -1,22 +1,19 @@
-import { Button } from "antd"
+import { useStorage } from "@plasmohq/storage/hook"
 
-import { ThemeProvider } from "~theme"
 
 function IndexPopup() {
+  const [webhookUrl, setWebhookUrl] = useStorage("webhookUrl")
+
   return (
-    <ThemeProvider>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          padding: 16
-        }}>
-        <h1>
-          Welcome to your <a href="https://www.plasmo.com">Plasmo</a> Extension!
-        </h1>
-        <Button type="primary">Live long and prosper</Button>
-      </div>
-    </ThemeProvider>
+    <div>
+      <h1>
+        Memiarz 0.1
+      </h1>
+      <label>
+        <p>webhook URL</p>
+        <textarea style={{ width: 400, height: 50 }} onChange={e => setWebhookUrl(e.target.value)} value={webhookUrl}/>
+      </label>
+    </div>
   )
 }
 
